@@ -14,11 +14,6 @@ services:
             - redis
         volumes:
             - ~/sharelatex_data:/var/lib/sharelatex
-            ########################################################################
-            ####  Server Pro: Uncomment the following line to mount the docker  ####
-            ####             socket, required for Sibling Containers to work    ####
-            ########################################################################
-            # - /var/run/docker.sock:/var/run/docker.sock
         environment:
 
             SHARELATEX_APP_NAME: Overleaf Community Edition
@@ -69,35 +64,6 @@ services:
             # SHARELATEX_EMAIL_SMTP_LOGGER: true
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: "This system is run by department x"
 
-            ################
-            ## Server Pro ##
-            ################
-
-            # SANDBOXED_COMPILES: 'true'
-
-            # SANDBOXED_COMPILES_SIBLING_CONTAINERS: 'true'
-            # SANDBOXED_COMPILES_HOST_DIR: '/var/sharelatex_data/data/compiles'
-            # SYNCTEX_BIN_HOST_PATH: '/var/sharelatex_data/bin/synctex'
-
-            # DOCKER_RUNNER: 'false'
-
-            ## Works with test LDAP server shown at bottom of docker compose
-            # SHARELATEX_LDAP_URL: 'ldap://ldap:389'
-            # SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'
-            # SHARELATEX_LDAP_SEARCH_FILTER: '(uid={{username}})'
-            # SHARELATEX_LDAP_BIND_DN: 'cn=admin,dc=planetexpress,dc=com'
-            # SHARELATEX_LDAP_BIND_CREDENTIALS: 'GoodNewsEveryone'
-            # SHARELATEX_LDAP_EMAIL_ATT: 'mail'
-            # SHARELATEX_LDAP_NAME_ATT: 'cn'
-            # SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'
-            # SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'
-
-            # SHARELATEX_TEMPLATES_USER_ID: "578773160210479700917ee5"
-            # SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS: '[ {"name":"All Templates","url":"/templates/all"}]'
-
-
-            # SHARELATEX_PROXY_LEARN: "true"
-
     mongo:
         restart: always
         image: mongo:4.0
@@ -121,12 +87,6 @@ services:
         volumes:
             - ~/redis_data:/data
 
-    # ldap:
-    #    restart: always
-    #    image: rroemhild/test-openldap
-    #    container_name: ldap
-    #    expose:
-    #        - 389
 
     # See https://github.com/jwilder/nginx-proxy for documentation on how to configure the nginx-proxy container,
     # and https://github.com/overleaf/overleaf/wiki/HTTPS-reverse-proxy-using-Nginx for an example of some recommended
