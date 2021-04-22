@@ -3,13 +3,9 @@ name: Docker CI
 on:
   release:
     types: [published]
-
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Docker login
