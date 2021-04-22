@@ -1,6 +1,6 @@
 # sharelatex-full
 
-**This is not finished an under heavy developement.**
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tuetenk0pp/sharelatex-full/Docker%20CI?style=flat-square)
 
 Overleaf docker image incuding all packages available with ``tlmgr install scheme-full``
 
