@@ -1,0 +1,23 @@
+name: Docker CI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker login
+      env:
+        DOCKER_USER: ${{ secret.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secret.DOCKER_PASSWORD }}
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:latest
+    - name: Docker push
+      run: docker push tuetenk0pp/sharelatex-full:latest
