@@ -6,7 +6,7 @@ Overleaf docker image incuding all packages available with ``tlmgr install schem
 
 ## Installation
 
-Just like the official Overleaf docker container. You can use the docker-compose.yaml provided in the official repo.
+Just like the official Overleaf docker container. You can use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
 
 ### Dockerfile
 
@@ -27,32 +27,6 @@ RUN set -x \
     && tlmgr update --self \
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
     && tlmgr install scheme-full
-#
-# Install TeX Live: metapackage pulling in all components of TeX Live
-# Wofür!?
-#RUN set -x \
-    #&& apt-get update 
-    #&& apt-get install -y texlive-full
-#
-# Install Pygments for minted
-#RUN set -x \
-#    && apt-get update \
-#    && apt-get install -y xzdec python-pygments
-#
-# For some reason, European Portuguese is not installed
-#RUN set -x \
-#    && wget http://natura.di.uminho.pt/download/sources/Dictionaries/aspell6/aspell6.pt-20171225.tar.bz2 \
-#    && tar xf aspell6.pt-20171225.tar.bz2 \
-#   && cd aspell6-pt_PT-20171225-0/ \
-#    && ./configure \
-#    && make \
-#    && make install \
-#    && cd .. \
-#    && rm -rf aspell6.pt-20171225.tar.bz2 aspell6-pt_PT-20171225-0/
-#
-# -shell-escape is required by minted
-# https://github.com/sharelatex/sharelatex-docker-image/issues/45#issuecomment-247809588
-#RUN sed -i 's/concat(\[\"-pdf\",/concat(\[\"-pdf\",\"-shell-escape\",/g' /var/www/sharelatex/clsi/app/js/LatexRunner.js
 
 ```
 
@@ -75,11 +49,6 @@ services:
             - redis
         volumes:
             - ~/sharelatex_data:/var/lib/sharelatex
-            ########################################################################
-            ####  Server Pro: Uncomment the following line to mount the docker  ####
-            ####             socket, required for Sibling Containers to work    ####
-            ########################################################################
-            # - /var/run/docker.sock:/var/run/docker.sock
         environment:
 
             SHARELATEX_APP_NAME: Overleaf Community Edition
@@ -130,35 +99,6 @@ services:
             # SHARELATEX_EMAIL_SMTP_LOGGER: true
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: "This system is run by department x"
 
-            ################
-            ## Server Pro ##
-            ################
-
-            # SANDBOXED_COMPILES: 'true'
-
-            # SANDBOXED_COMPILES_SIBLING_CONTAINERS: 'true'
-            # SANDBOXED_COMPILES_HOST_DIR: '/var/sharelatex_data/data/compiles'
-            # SYNCTEX_BIN_HOST_PATH: '/var/sharelatex_data/bin/synctex'
-
-            # DOCKER_RUNNER: 'false'
-
-            ## Works with test LDAP server shown at bottom of docker compose
-            # SHARELATEX_LDAP_URL: 'ldap://ldap:389'
-            # SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'
-            # SHARELATEX_LDAP_SEARCH_FILTER: '(uid={{username}})'
-            # SHARELATEX_LDAP_BIND_DN: 'cn=admin,dc=planetexpress,dc=com'
-            # SHARELATEX_LDAP_BIND_CREDENTIALS: 'GoodNewsEveryone'
-            # SHARELATEX_LDAP_EMAIL_ATT: 'mail'
-            # SHARELATEX_LDAP_NAME_ATT: 'cn'
-            # SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'
-            # SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'
-
-            # SHARELATEX_TEMPLATES_USER_ID: "578773160210479700917ee5"
-            # SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS: '[ {"name":"All Templates","url":"/templates/all"}]'
-
-
-            # SHARELATEX_PROXY_LEARN: "true"
-
     mongo:
         restart: always
         image: mongo:4.0
@@ -182,12 +122,6 @@ services:
         volumes:
             - ~/redis_data:/data
 
-    # ldap:
-    #    restart: always
-    #    image: rroemhild/test-openldap
-    #    container_name: ldap
-    #    expose:
-    #        - 389
 
     # See https://github.com/jwilder/nginx-proxy for documentation on how to configure the nginx-proxy container,
     # and https://github.com/overleaf/overleaf/wiki/HTTPS-reverse-proxy-using-Nginx for an example of some recommended
