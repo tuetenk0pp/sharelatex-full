@@ -6,30 +6,18 @@ Overleaf docker image incuding all packages available with ``tlmgr install schem
 
 ## Installation
 
-Just like the official Overleaf docker container. Use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
+### Overleaf Toolkit
 
-### Dockerfile
-
-``` Dockerfile
-FROM sharelatex/sharelatex:latest
-
-RUN set -x \
-    && tlmgr init-usertree \
-    # Select closest mirror automatically: http://tug.org/texlive/doc/install-tl.html
-    #
-    # Latest TeX Live repository
-    && tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet/ \
-    #
-    # From local TeX Live repository
-    #&& tlmgr option repository http://nginx/ \
-    #
-    && tlmgr update --self \
-    # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-    && tlmgr install scheme-full
-
+Ideally, you would use the [Overleaf Toolkit](https://github.com/overleaf/toolkit) as described [here](https://github.com/overleaf/toolkit/blob/master/doc/configuration.md#the-docker-composeoverrideyml-file) with a [docker-compose.override.yaml](./docker-compose.override.yaml). Example:
+```yaml
+services:
+    sharelatex:
+        image: tuetenk0pp/sharelatex-full
 ```
 
-### docker-compose
+### Docker Compose
+
+Alternatively, use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
 
 ``` yaml
 version: '2.2'
@@ -139,5 +127,25 @@ services:
 
 ```
 
+## Dockerfile
+
+``` Dockerfile
+FROM sharelatex/sharelatex:latest
+
+RUN set -x \
+    && tlmgr init-usertree \
+    # Select closest mirror automatically: http://tug.org/texlive/doc/install-tl.html
+    #
+    # Latest TeX Live repository
+    && tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet/ \
+    #
+    # From local TeX Live repository
+    #&& tlmgr option repository http://nginx/ \
+    #
+    && tlmgr update --self \
+    # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
+    && tlmgr install scheme-full
+
+```
 
 
