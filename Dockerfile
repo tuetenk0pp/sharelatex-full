@@ -1,6 +1,5 @@
 FROM sharelatex/sharelatex:latest
 
-# This must be before install texlive-full
 RUN set -x \
     && tlmgr init-usertree \
     # Select closest mirror automatically: http://tug.org/texlive/doc/install-tl.html
