@@ -11,7 +11,7 @@ Just like the official Overleaf docker container. You can use the [docker-compos
 ### Dockerfile
 
 ``` Dockerfile
-FROM sharelatex/sharelatex
+FROM sharelatex/sharelatex:latest
 
 # This must be before install texlive-full
 RUN set -x \
