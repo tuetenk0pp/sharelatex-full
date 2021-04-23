@@ -9,7 +9,7 @@ Overleaf docker image incuding all packages available with ``tlmgr install schem
 ### Overleaf Toolkit
 
 Ideally, you would use the [Overleaf Toolkit](https://github.com/overleaf/toolkit) as described [here](https://github.com/overleaf/toolkit/blob/master/doc/configuration.md#the-docker-composeoverrideyml-file) with a [docker-compose.override.yaml](./docker-compose.override.yaml). Example:
-```yaml
+``` yaml
 services:
     sharelatex:
         image: tuetenk0pp/sharelatex-full
