@@ -6,7 +6,7 @@ Overleaf docker image incuding all packages available with ``tlmgr install schem
 
 ## Installation
 
-Just like the official Overleaf docker container. You can use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
+Just like the official Overleaf docker container. Use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
 
 ### Dockerfile
 
