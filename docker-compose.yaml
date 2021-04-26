@@ -2,7 +2,7 @@ version: '2.2'
 services:
     sharelatex-full:
         restart: always
-        image: sharelatex-full:latest
+        image: tuetenk0pp/sharelatex-full:latest
         container_name: sharelatex-full
         depends_on:
             - mongo
