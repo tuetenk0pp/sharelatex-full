@@ -13,4 +13,18 @@ RUN set -x \
     #
     && tlmgr update --self \
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-    && tlmgr install scheme-full
+    && tlmgr install scheme-full\
+    #
+    # get minted to work
+    # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
+    && apt get update \
+    && apt install python-pygments -y \
+    #
+    # either put a latexmkrc-file in the root directory of your project:
+    #
+    # # latexmkrc
+    # $pdflatex = 'pdflatex --shell-escape';
+    #
+    # or enable shell-escape by default:
+    && echo % enable shell-escape by default >> /usr/local/texlive/2021/texmf.cnf \
+    && echo shell_escape = t >> /usr/local/texlive/2021/texmf.cnf
