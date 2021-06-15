@@ -18,4 +18,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:dev
     - name: Docker push
-      run: docker push tuetenk0pp/sharelatex-full:latest
+      run: docker push tuetenk0pp/sharelatex-full:dev
