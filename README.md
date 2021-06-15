@@ -37,6 +37,10 @@ RUN set -x \
     #
     && tlmgr update --self \
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
+    #
+    && tlmgr update texlive-scripts \
+    # https://tex.stackexchange.com/questions/598380/cannot-install-ctex-via-tlmgr-unknown-option-status-file-when-running-fmtuti
+    #
     && tlmgr install scheme-full \
     #
     # get minted to work
