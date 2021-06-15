@@ -13,7 +13,7 @@ RUN set -x \
     #
     && tlmgr update --self \
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-    && tlmgr install scheme-full\
+    && tlmgr install scheme-full \
     #
     # get minted to work
     # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
