@@ -45,8 +45,8 @@ RUN set -x \
     #
     # get minted to work
     # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
-    && apt get update \
-    && apt install python-pygments -y \
+    && apt-get update \
+    && apt-get install python-pygments -y \
     #
     # either put a latexmkrc-file in the root directory of your project:
     #
