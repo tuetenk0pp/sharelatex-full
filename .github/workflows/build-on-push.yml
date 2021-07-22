@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build the dev image
       run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:dev
