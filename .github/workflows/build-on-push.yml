@@ -2,7 +2,8 @@ name: Docker build on push
 
 on:
   push:
-    
+    paths:
+    - 'Dockerfile'
 jobs:
   build:
     runs-on: ubuntu-latest
