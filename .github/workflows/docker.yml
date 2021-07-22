@@ -17,7 +17,7 @@ jobs:
       run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:latest
     - name: push latest
       run: docker push tuetenk0pp/sharelatex-full:latest
-    - name: Build with version ($GITHUB_REF) tag
+    - name: Build with version tag
       run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:$GITHUB_REF
     - name: push version
       run: docker push tuetenk0pp/sharelatex-full:latest
