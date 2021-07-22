@@ -4,6 +4,8 @@ on:
   push:
     paths:
     - 'Dockerfile'
+    tags-ignore:
+    - ''
 jobs:
   build:
     runs-on: ubuntu-latest
