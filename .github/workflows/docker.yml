@@ -14,8 +14,8 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build latest and tagged
-      run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:latest --tag tuetenk0pp/sharelatex-full:${GITHUB_REF:27}
+      run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:latest --tag tuetenk0pp/sharelatex-full:${GITHUB_REF:10}
     - name: push latest
       run: docker push tuetenk0pp/sharelatex-full:latest
     - name: push tagged
-      run: docker push tuetenk0pp/sharelatex-full:${GITHUB_REF:27}
+      run: docker push tuetenk0pp/sharelatex-full:${GITHUB_REF:10}
