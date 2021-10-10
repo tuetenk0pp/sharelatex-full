@@ -1,4 +1,4 @@
-name: Docker push release
+name: Docker build and push release
 
 on:
   release:
@@ -13,11 +13,9 @@ jobs:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Build with latest tag
-      run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:latest
+    - name: Build latest and tagged
+      run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:latest --tag tuetenk0pp/sharelatex-full:${GITHUB_REF:27}
     - name: push latest
       run: docker push tuetenk0pp/sharelatex-full:latest
-    - name: Build with version tag
-      run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:$GITHUB_REF
-    - name: push version
-      run: docker push tuetenk0pp/sharelatex-full:latest
+    - name: push tagged
+      run: docker push tuetenk0pp/sharelatex-full:${GITHUB_REF:27}
