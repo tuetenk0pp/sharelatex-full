@@ -4,7 +4,7 @@ on:
   push:
     paths:
     - 'Dockerfile'
-    tags-ignore:
+    tags:
     - ''
 jobs:
   build:
