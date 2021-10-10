@@ -1,5 +1,4 @@
 # Overleaf Version 3.0.1
-#
 # based on the work from rigon (https://github.com/rigon/docker-sharelatex-full)
 FROM sharelatex/sharelatex:latest
 
