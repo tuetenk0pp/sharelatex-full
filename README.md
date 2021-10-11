@@ -2,7 +2,7 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tuetenk0pp/sharelatex-full/Docker%20CI?style=flat-square) ![Docker Pulls](https://img.shields.io/docker/pulls/tuetenk0pp/sharelatex-full?style=flat-square) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tuetenk0pp/sharelatex-full?style=flat-square) ![Docker Stars](https://img.shields.io/docker/stars/tuetenk0pp/sharelatex-full?style=flat-square)
 
-Overleaf docker image incuding all packages available with ``tlmgr install scheme-full``
+Overleaf docker image incuding all packages available with ``tlmgr install scheme-full`` and minted support
 
 ## Installation
 
