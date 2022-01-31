@@ -1,11 +1,7 @@
-name: Docker build on push
+name: manual build
 
-on:
-  push:
-    paths:
-    - 'Dockerfile'
-    tags:
-    - ''
+on: workflow_dispatch
+  
 jobs:
   build:
     runs-on: ubuntu-latest
