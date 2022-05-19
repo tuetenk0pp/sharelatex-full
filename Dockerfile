@@ -3,16 +3,18 @@ FROM sharelatex/sharelatex:latest
 
 RUN set -x \
     # initialize usertree to allow user-mode
-    && echo "*** Initialize usertree to allow user-mode. ***" \
-    && tlmgr init-usertree \
+    #&& echo "*** Initialize usertree to allow user-mode. ***" \
+    #&& tlmgr init-usertree \
     #
     # Select closest mirror automatically: http://tug.org/texlive/doc/install-tl.html
-    && echo "*** Select closest mirror for package downloads. ***" \
-    && tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet/ \
+    #&& echo "*** Select closest mirror for package downloads. ***" \
+    #&& tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet/ \
     #
     # update tlmgr itself
-    && echo "*** Update tlmgr itself. ***" \
-    && tlmgr update --self \
+    wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh"
+    sh update-tlmgr-latest.sh
+    #&& echo "*** Update tlmgr itself. ***" \
+    #&& tlmgr update --self \
     #
     # enable tlmgr to install ctex
     # https://tex.stackexchange.com/questions/598380/cannot-install-ctex-via-tlmgr-unknown-option-status-file-when-running-fmtuti
