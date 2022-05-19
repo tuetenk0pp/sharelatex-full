@@ -2,20 +2,16 @@
 FROM sharelatex/sharelatex:latest
 
 RUN set -x \
-    # initialize usertree to allow user-mode
-    #&& echo "*** Initialize usertree to allow user-mode. ***" \
-    #&& tlmgr init-usertree \
-    #
-    # Select closest mirror automatically: http://tug.org/texlive/doc/install-tl.html
-    #&& echo "*** Select closest mirror for package downloads. ***" \
-    #&& tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet/ \
     #
     # update tlmgr itself
+    && echo "*** Update tlmgr itself. ***" \
     && wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" \
     && sh update-tlmgr-latest.sh \
     && tlmgr --version \
-    #&& echo "*** Update tlmgr itself. ***" \
-    #&& tlmgr update --self \
+    #
+    # initialize usertree to allow user-mode
+    && echo "*** Initialize usertree to allow user-mode. ***" \
+    && tlmgr init-usertree \
     #
     # enable tlmgr to install ctex
     # https://tex.stackexchange.com/questions/598380/cannot-install-ctex-via-tlmgr-unknown-option-status-file-when-running-fmtuti
@@ -40,5 +36,6 @@ RUN set -x \
     #
     # or enable shell-escape by default:
     && echo "*** Enable shell-escape. ***" \
-    && echo % enable shell-escape by default >> /usr/local/texlive/2021/texmf.cnf \
-    && echo shell_escape = t >> /usr/local/texlive/2021/texmf.cnf
+    && TEXLIVE_FOLDER=$(find usr/local/texlive/ -type d -name '20*') \
+    && echo % enable shell-escape by default >> $TEXLIVE_FOLDER/texmf.cnf \
+    && echo shell_escape = t >> /TEXLIVE_FOLDER/texmf.cnf
