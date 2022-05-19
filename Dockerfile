@@ -20,8 +20,8 @@ RUN set -x \
     #
     # install all the packages
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-    #&& echo "*** Install all the packages. This might take a while. ***" \
-    #&& tlmgr install scheme-full \
+    && echo "*** Install all the packages. This might take a while. ***" \
+    && tlmgr install scheme-full \
     #
     # get minted to work
     # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
