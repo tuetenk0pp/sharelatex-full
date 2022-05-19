@@ -13,6 +13,7 @@ RUN set -x \
     # update tlmgr itself
     && wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" \
     && sh update-tlmgr-latest.sh \
+    && tlmgr --version
     #&& echo "*** Update tlmgr itself. ***" \
     #&& tlmgr update --self \
     #
@@ -23,8 +24,8 @@ RUN set -x \
     #
     # install all the packages
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-    && echo "*** Install all the packages. This might take a while. ***" \
-    && tlmgr install scheme-full \
+    #&& echo "*** Install all the packages. This might take a while. ***" \
+    #&& tlmgr install scheme-full \
     #
     # get minted to work
     # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
@@ -39,5 +40,5 @@ RUN set -x \
     #
     # or enable shell-escape by default:
     && echo "*** Enable shell-escape. ***" \
-    && echo % enable shell-escape by default >> /usr/local/texlive/2022/texmf.cnf \
-    && echo shell_escape = t >> /usr/local/texlive/2022/texmf.cnf
+    && echo % enable shell-escape by default >> /usr/local/texlive/2021/texmf.cnf \
+    && echo shell_escape = t >> /usr/local/texlive/2021/texmf.cnf
