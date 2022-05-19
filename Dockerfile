@@ -37,5 +37,5 @@ RUN set -x \
     # or enable shell-escape by default:
     && echo "*** Enable shell-escape. ***" \
     && TEXLIVE_FOLDER=$(find usr/local/texlive/ -type d -name '20*') \
-    && echo % enable shell-escape by default >> $TEXLIVE_FOLDER/texmf.cnf \
-    && echo shell_escape = t >> /TEXLIVE_FOLDER/texmf.cnf
+    && echo % enable shell-escape by default >> /$TEXLIVE_FOLDER/texmf.cnf \
+    && echo shell_escape = t >> /$TEXLIVE_FOLDER/texmf.cnf
