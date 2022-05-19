@@ -12,7 +12,7 @@ RUN set -x \
     #
     # update tlmgr itself
     && wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" \
-    && sh update-tlmgr-latest.sh --update \
+    && sh update-tlmgr-latest.sh \
     #&& echo "*** Update tlmgr itself. ***" \
     #&& tlmgr update --self \
     #
