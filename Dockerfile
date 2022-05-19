@@ -11,8 +11,8 @@ RUN set -x \
     #&& tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet/ \
     #
     # update tlmgr itself
-    wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" \
-    sh update-tlmgr-latest.sh --update \
+    && wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" \
+    && sh update-tlmgr-latest.sh --update \
     #&& echo "*** Update tlmgr itself. ***" \
     #&& tlmgr update --self \
     #
@@ -39,5 +39,5 @@ RUN set -x \
     #
     # or enable shell-escape by default:
     && echo "*** Enable shell-escape. ***" \
-    && echo % enable shell-escape by default >> /usr/local/texlive/2021/texmf.cnf \
-    && echo shell_escape = t >> /usr/local/texlive/2021/texmf.cnf
+    && echo % enable shell-escape by default >> /usr/local/texlive/2022/texmf.cnf \
+    && echo shell_escape = t >> /usr/local/texlive/2022/texmf.cnf
