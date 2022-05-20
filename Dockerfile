@@ -16,11 +16,11 @@ RUN wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" 
 RUN tlmgr update texlive-scripts 
     #
     # update packages
-RUN tlmgr update --all --dry-run
+RUN tlmgr update --all
     #
     # install all the packages
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-RUN tlmgr install scheme-full --dry-run
+RUN tlmgr install scheme-full
     #
     # get minted to work
     # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
