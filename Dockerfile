@@ -9,15 +9,18 @@ RUN wget "https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh" 
     && tlmgr --version
     #
     # initialize usertree to allow user-mode
-RUN tlmgr init-usertree
+#RUN tlmgr init-usertree
     #
     # enable tlmgr to install ctex
     # https://tex.stackexchange.com/questions/598380/cannot-install-ctex-via-tlmgr-unknown-option-status-file-when-running-fmtuti
 RUN tlmgr update texlive-scripts 
     #
+    # update packages
+RUN tlmgr update --all --dry-run
+    #
     # install all the packages
     # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
-RUN tlmgr install scheme-full
+RUN tlmgr install scheme-full --dry-run
     #
     # get minted to work
     # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
