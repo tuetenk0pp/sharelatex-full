@@ -1,6 +1,8 @@
 # based on the work from rigon (https://github.com/rigon/docker-sharelatex-full)
 FROM sharelatex/sharelatex:latest
 
+SHELL ["/bin/bash", "-cx"]
+
 RUN set -x \
     #
     # update tlmgr itself
