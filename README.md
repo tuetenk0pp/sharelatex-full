@@ -1,8 +1,8 @@
 # sharelatex-full (Overleaf)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tuetenk0pp/sharelatex-full/Docker%20build%20and%20push%20release?style=flat-square) ![Docker Pulls](https://img.shields.io/docker/pulls/tuetenk0pp/sharelatex-full?style=flat-square) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tuetenk0pp/sharelatex-full?style=flat-square) ![Docker Stars](https://img.shields.io/docker/stars/tuetenk0pp/sharelatex-full?style=flat-square)
+[![GitHub license](https://img.shields.io/github/license/Tuetenk0pp/sharelatex-full)](https://github.com/Tuetenk0pp/sharelatex-full/blob/master/LICENSE) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Tuetenk0pp/sharelatex-full/Docker%20build%20and%20push%20release)](https://github.com/Tuetenk0pp/sharelatex-full/actions/workflows/build%20and%20push%20release.yml) [![GitHub issues](https://img.shields.io/github/issues/tuetenk0pp/sharelatex-full)](https://github.com/Tuetenk0pp/sharelatex-full/issues) [![Docker Pulls](https://img.shields.io/docker/pulls/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full) [![Docker Stars](https://img.shields.io/docker/stars/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full)
 
-Overleaf docker image incuding all packages available with ``tlmgr install scheme-full`` and minted support
+Overleaf docker image incuding all packages available with ``tlmgr install scheme-full`` and minted support. Have a look at the [Dockerfile](Dockerfile) to find out more.
 
 ## Installation
 
