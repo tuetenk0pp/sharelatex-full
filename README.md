@@ -1,4 +1,4 @@
-# sharelatex-full
+# sharelatex-full (Overleaf)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tuetenk0pp/sharelatex-full/Docker%20build%20and%20push%20release?style=flat-square) ![Docker Pulls](https://img.shields.io/docker/pulls/tuetenk0pp/sharelatex-full?style=flat-square) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tuetenk0pp/sharelatex-full?style=flat-square) ![Docker Stars](https://img.shields.io/docker/stars/tuetenk0pp/sharelatex-full?style=flat-square)
 
@@ -18,3 +18,8 @@ services:
 ### Docker Compose
 
 Alternatively, use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
+
+## Dockerfile
+
+```Dockerfile:Dockerfile
+```
