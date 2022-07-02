@@ -18,8 +18,3 @@ services:
 ### Docker Compose
 
 Alternatively, use the [docker-compose.yaml](https://github.com/overleaf/overleaf/blob/master/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
-
-## Dockerfile
-
-```Dockerfile:Dockerfile
-```
