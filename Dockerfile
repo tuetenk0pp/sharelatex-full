@@ -36,6 +36,6 @@ RUN apt-get install inkscape -y
     # $pdflatex = 'pdflatex --shell-escape';
     #
     # or enable shell-escape by default:
-RUN TEXLIVE_FOLDER=$(find usr/local/texlive/ -type d -name '20*') \
+RUN TEXLIVE_FOLDER=$(find /usr/local/texlive/ -type d -name '20*') \
     && echo % enable shell-escape by default >> /$TEXLIVE_FOLDER/texmf.cnf \
     && echo shell_escape = t >> /$TEXLIVE_FOLDER/texmf.cnf
