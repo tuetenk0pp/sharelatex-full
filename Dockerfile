@@ -27,6 +27,9 @@ RUN tlmgr install scheme-full
 RUN apt-get update \
     && apt-get install python-pygments -y
     #
+    # install inkscape for svg support
+RUN apt-get install inkscape
+    #
     # either put a latexmkrc-file in the root directory of your project:
     #
     # # latexmkrc
