@@ -1,7 +1,7 @@
 # sharelatex-full (Overleaf)
 
 [![GitHub license](https://img.shields.io/github/license/Tuetenk0pp/sharelatex-full)](https://github.com/Tuetenk0pp/sharelatex-full/blob/master/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Tuetenk0pp/sharelatex-full/Docker%20build%20and%20push%20release)](https://github.com/Tuetenk0pp/sharelatex-full/actions/workflows/build%20and%20push%20release.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Tuetenk0pp/sharelatex-full/build-and-push-release.yml?branch=master)](https://github.com/Tuetenk0pp/sharelatex-full/actions/workflows/build-and-push-release.yml)
 [![GitHub issues](https://img.shields.io/github/issues/tuetenk0pp/sharelatex-full)](https://github.com/Tuetenk0pp/sharelatex-full/issues)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full)
