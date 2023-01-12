@@ -1,6 +1,10 @@
-name: manual build
+name: test build
 
-on: workflow_dispatch
+on:
+  pull_request:
+    paths:
+      - Dockerfile
+  workflow_dispatch:
   
 jobs:
   build:
