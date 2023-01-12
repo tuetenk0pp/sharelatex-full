@@ -10,13 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Docker login
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Build the dev image
+    - name: checkout code
+      uses: actions/checkout@v3
+    - name: test build image
       run: docker build . --file Dockerfile --tag tuetenk0pp/sharelatex-full:dev
-    - name: push dev
-      run: docker push tuetenk0pp/sharelatex-full:dev
