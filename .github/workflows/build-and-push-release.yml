@@ -17,4 +17,4 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         push: true
-        tags: tuetenk0pp/sharelatex-full:latest, tuetenk0pp/sharelatex-full:${GITHUB_REF:10}
+        tags: tuetenk0pp/sharelatex-full:latest, tuetenk0pp/sharelatex-full:${{ env.GITHUB_REF_NAME }}
