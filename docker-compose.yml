@@ -13,7 +13,7 @@ services:
             - mongo
             - redis
         volumes:
-            - ~/sharelatex_data:/var/lib/sharelatex
+            - sharelatex_data:/var/lib/sharelatex
         environment:
 
             SHARELATEX_APP_NAME: Overleaf Community Edition
@@ -71,7 +71,7 @@ services:
         expose:
             - 27017
         volumes:
-            - ~/mongo_data:/data/db
+            - mongo_data:/data/db
         healthcheck:
             test: echo 'db.stats().ok' | mongo localhost:27017/test --quiet
             interval: 10s
@@ -85,7 +85,7 @@ services:
         expose:
             - 6379
         volumes:
-            - ~/redis_data:/data
+            - redis_data:/data
 
 
     # See https://github.com/jwilder/nginx-proxy for documentation on how to configure the nginx-proxy container,
@@ -102,3 +102,8 @@ services:
     #     volumes:
     #       - /var/run/docker.sock:/tmp/docker.sock:ro
     #       - /home/sharelatex/tmp:/etc/nginx/certs
+
+volumes:
+    sharelatex_data:
+    mongo_data:
+    redis_data:
