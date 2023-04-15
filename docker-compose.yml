@@ -1,7 +1,7 @@
 # This is meant for use in development, use the method described in README.md for deployment instead.
 version: '2.2'
 services:
-    sharelatex-full:
+    sharelatex:
         restart: always
         image: tuetenk0pp/sharelatex-full:latest
         container_name: sharelatex-full
