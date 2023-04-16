@@ -22,6 +22,10 @@ RUN tlmgr update --all
 # https://tex.stackexchange.com/questions/340964/what-do-i-need-to-install-to-make-more-packages-available-under-sharelatex
 RUN tlmgr install scheme-full
 #
+# recreate symlinks
+# https://www.tug.org/texlive/doc/tlmgr.html#path
+RUN tlmgr path add
+#
 # get minted to work
 # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
 RUN apt-get update
