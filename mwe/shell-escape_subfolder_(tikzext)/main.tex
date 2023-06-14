@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\usepackage{pgfplots}
+
+\usepgfplotslibrary{external}
+
+\tikzexternalize
+\tikzsetexternalprefix{tikzext/}
+
+\begin{document}
+    \tikzsetnextfilename{plot}
+    \begin{tikzpicture}
+        \begin{axis}
+            \addplot{exp(x)};
+        \end{axis}
+    \end{tikzpicture}
+\end{document}
