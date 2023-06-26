@@ -53,6 +53,8 @@ services:
             interval: 10s
             timeout: 10s
             retries: 5
+        # https://github.com/overleaf/overleaf/wiki/Release-Notes--4.x.x#manually-setting-up-mongodb-as-a-replica-set
+        command: "--replSet overleaf"
 
     redis:
         restart: always
