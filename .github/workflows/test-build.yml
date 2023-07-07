@@ -40,4 +40,4 @@ jobs:
       - name: Load image
         run: |
           docker load --input /tmp/sharelatex-full.tar
-          docker run --rm --volume ./mwe:/mwe --entrypoint=/bin/bash sharelatex-full:test -c "/bin/bash /mwe/compile.sh"
+          docker run --rm --volume $(pwd)/mwe:/mwe --entrypoint=/bin/bash sharelatex-full:test -c "/bin/bash /mwe/compile.sh"
