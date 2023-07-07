@@ -1,7 +1,8 @@
-\documentclass{standalone}
+\documentclass[border=10mm, varwidth]{standalone}
 \usepackage{minted}
+
 \begin{document}
-\begin{minted}{python}
+    \begin{minted}{python}
 import numpy as np
     
 def incmatrix(genl1,genl2):
@@ -31,5 +32,5 @@ def incmatrix(genl1,genl2):
                 VT = np.zeros((n*m,1), int)
     
     return M
-\end{minted}
+    \end{minted}
 \end{document}
