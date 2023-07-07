@@ -35,3 +35,8 @@ _minted*
 *.toc
 *.vrb
 *.xml
+*.eps
+*.bbox
+*.count
+*.list
+*.pdf_tex
