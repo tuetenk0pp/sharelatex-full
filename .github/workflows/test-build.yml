@@ -43,8 +43,8 @@ jobs:
         run: docker load --input /tmp/sharelatex-full.tar
       - name: Build MWEs
         run: docker run --rm --volume $(pwd)/mwe:/mwe --entrypoint=/bin/bash sharelatex-full:test -c "/bin/bash /mwe/compile.sh"
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        path: ./mwe/*/*.pdf
-        retention-days: 7
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./mwe/*/*.pdf
+          retention-days: 7
