@@ -1,0 +1,24 @@
+\documentclass[border=10mm]{standalone}
+\usepackage{lyluatex}
+
+\begin{document}
+
+    \begin{lilypond}
+    \version "2.14.1"
+    \include "english.ly"
+
+    \score {
+        \new Staff {
+            \key d \major
+            \numericTimeSignature
+            \time 2/4
+            <cs' d'' b''>16 <cs' d'' b''>8.
+            %% Here: the tie on the D's looks funny
+            %% Too tall? Left-hand endpoint is not aligned with the B tie?
+            ~
+            <cs' d'' b''>8 [ <b d'' a''> ]
+        }
+    }
+    \end{lilypond}
+
+\end{document}

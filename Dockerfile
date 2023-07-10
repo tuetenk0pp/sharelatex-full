@@ -26,13 +26,18 @@ RUN tlmgr install scheme-full
 # https://www.tug.org/texlive/doc/tlmgr.html#path
 RUN tlmgr path add
 #
-# get minted to work
+# update system packages
+RUN apt-get update && apt-get upgrade -y
+#
+# install minted dependency
 # https://github.com/overleaf/overleaf/issues/851#issuecomment-830276429
-RUN apt-get update
 RUN apt-get install python3-pygments -y
 #
 # install inkscape for svg support
 RUN apt-get install inkscape -y
+#
+# install lilypond
+RUN apt-get install lilypond -y
 #
 # either put a latexmkrc-file in the root directory of your project:
 #
