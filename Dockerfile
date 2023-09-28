@@ -1,5 +1,5 @@
 # based on the work from rigon (https://github.com/rigon/docker-sharelatex-full)
-FROM sharelatex/sharelatex:4.1.1
+FROM sharelatex/sharelatex:4.1.2
 
 SHELL ["/bin/bash", "-cx"]
 
