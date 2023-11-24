@@ -8,7 +8,7 @@
 [![Docker Stars](https://img.shields.io/docker/stars/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full)
 [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/tuetenk0pp/sharelatex-full)](https://hub.docker.com/r/tuetenk0pp/sharelatex-full)
 
-Overleaf docker image incuding all packages available with ``tlmgr install scheme-full`` and minted support.
+Overleaf docker image including all packages available with ``tlmgr install scheme-full`` and minted support.
 Inkscape is added for `svg`-image support.
 Have a look at the [Dockerfile](./Dockerfile) to find out more.
 
@@ -28,4 +28,4 @@ services:
 ### Docker Compose
 
 Alternatively, use the [docker-compose.yml](https://github.com/overleaf/overleaf/blob/main/docker-compose.yml) provided in the [official GitHub](https://github.com/overleaf/overleaf), but change the image to ``tuetenk0pp/sharelatex-full``.
-Also, note the additional instructions in the [official Wiki](https://github.com/overleaf/overleaf/wiki/Release-Notes--4.x.x#manually-setting-up-mongodb-as-a-replica-set)
+Also, note the additional instructions in the [official Wiki](https://github.com/overleaf/overleaf/wiki/Release-Notes--4.x.x#manually-setting-up-mongodb-as-a-replica-set).
