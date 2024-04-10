@@ -1,4 +1,4 @@
-name: Build and push release to Docker Hub
+name: Build and push release to GitHub Packages
 
 on:
   workflow_dispatch:
