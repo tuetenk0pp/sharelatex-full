@@ -23,7 +23,7 @@ Have a look at the [Dockerfile](./Dockerfile) to find out more.
 
 ### Overleaf Toolkit
 
-Ideally, you would use the [Overleaf Toolkit](https://github.com/overleaf/toolkit) as described [here](https://github.com/overleaf/toolkit/blob/master/doc/configuration.md#the-docker-composeoverrideyml-file) with a [docker-compose.override.yml](./docker-compose.override.yml).
+Ideally, you would use the [Overleaf Toolkit](https://github.com/overleaf/toolkit) as described [here](https://github.com/overleaf/toolkit/blob/master/doc/configuration.md#the-docker-composeoverrideyml-file) with a [compose.override.yaml](./compose.override.yaml).
 Example:
 
 ``` yml
