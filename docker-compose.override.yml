@@ -1,3 +1,0 @@
-services:
-    sharelatex:
-        image: tuetenk0pp/sharelatex-full:latest

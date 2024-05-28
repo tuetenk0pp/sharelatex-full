@@ -1,10 +1,11 @@
 # This is meant for use in development, use the method described in README.md for deployment instead.
-version: '2.2'
+name: sharelatex-full
+
 services:
     sharelatex:
         restart: always
-        image: tuetenk0pp/sharelatex-full:latest
-        container_name: sharelatex-full
+        image: sharelatex/sharelatex
+        container_name: sharelatex
         depends_on:
             mongo:
                 condition: service_healthy
@@ -15,17 +16,18 @@ services:
         links:
             - mongo
             - redis
+        stop_grace_period: 60s
         volumes:
-            - sharelatex_data:/var/lib/sharelatex
+            - sharelatex_data:/var/lib/overleaf
         environment:
 
-            SHARELATEX_APP_NAME: Overleaf Community Edition
+            OVERLEAF_APP_NAME: Overleaf Community Edition
 
-            SHARELATEX_MONGO_URL: mongodb://mongo/sharelatex
+            OVERLEAF_MONGO_URL: mongodb://mongo/sharelatex
 
             # Same property, unfortunately with different names in
             # different locations
-            SHARELATEX_REDIS_HOST: redis
+            OVERLEAF_REDIS_HOST: redis
             REDIS_HOST: redis
 
             ENABLED_LINKED_FILE_TYPES: 'project_file,project_output_file'
@@ -38,7 +40,7 @@ services:
 
             # temporary fix for LuaLaTex compiles
             # see https://github.com/overleaf/overleaf/issues/695
-            TEXMFVAR: /var/lib/sharelatex/tmp/texmf-var
+            TEXMFVAR: /var/lib/overleaf/tmp/texmf-var
 
     mongo:
         restart: always
