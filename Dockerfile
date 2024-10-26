@@ -22,9 +22,6 @@ RUN tlmgr path add
 # update system packages
 RUN apt-get update && apt-get upgrade -y
 
-# install minted dependency
-RUN apt-get install python3-pygments -y
-
 # install inkscape for svg support
 RUN apt-get install inkscape -y
 
