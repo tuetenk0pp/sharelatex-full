@@ -1,4 +1,4 @@
-FROM sharelatex/sharelatex:5.5.5
+FROM sharelatex/sharelatex:6.0.0
 
 SHELL ["/bin/bash", "-cx"]
 
