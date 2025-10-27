@@ -23,7 +23,7 @@ jobs:
         cache-to: type=gha,mode=max
         outputs: type=docker,dest=/tmp/sharelatex-full.tar
     - name: Upload artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: sharelatex-full
         path: /tmp/sharelatex-full.tar
@@ -46,7 +46,7 @@ jobs:
       - name: Build MWEs
         run: docker run --rm --volume $(pwd)/tests:/tests --entrypoint=/bin/bash sharelatex-full:test -c "/bin/bash /tests/compile.sh"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           path: ./mwe/*/*.pdf
           retention-days: 7
