@@ -74,7 +74,6 @@ jobs:
     
     - name: Download build artifact
       uses: actions/download-artifact@v8
-      if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
       with:
         name: sharelatex-full
         path: /tmp
