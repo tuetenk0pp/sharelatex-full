@@ -58,6 +58,10 @@ jobs:
 
   push-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
     needs: build-and-test
     if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     
