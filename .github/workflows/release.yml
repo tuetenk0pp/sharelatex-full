@@ -101,22 +101,18 @@ jobs:
       with:
         images: docker.io/${{ github.repository }},ghcr.io/${{ github.repository }}
     
-    - name: Build and push Docker image
-      id: build-and-push
-      uses: docker/build-push-action@v6
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha,mode=max
-    
     - name: Install cosign
       uses: sigstore/cosign-installer@v3
 
-    - name: Sign the published Docker image
+    - name: Push and sign tested Docker image
       env:
         TAGS: ${{ steps.meta.outputs.tags }}
-        DIGEST: ${{ steps.build-and-push.outputs.digest }}
-      run: echo "${TAGS}" | tr ',' '\n' | xargs -I {} cosign sign --yes {}@${DIGEST}
-
+      run: |
+        set -euo pipefail
+        while IFS= read -r tag; do
+          [[ -n "$tag" ]] || continue
+          docker tag sharelatex-full:test "$tag"
+          digest="$(docker push --quiet "$tag")"
+          [[ "$digest" =~ ^sha256:[[:xdigit:]]{64}$ ]]
+          cosign sign --yes "${tag}@${digest}"
+        done <<< "$TAGS"
