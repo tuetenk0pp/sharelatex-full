@@ -1,0 +1,120 @@
+name: CI and Release
+
+on:
+  pull_request:
+    branches: [ "master" ]
+  push:
+    branches: [ "master" ]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v7
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4
+    
+    - name: Build and test image
+      id: build
+      uses: docker/build-push-action@v7
+      with:
+        context: .
+        push: false
+        tags: sharelatex-full:test
+        cache-from: type=gha,mode=max
+        outputs: type=docker,dest=/tmp/sharelatex-full.tar
+    
+    - name: Run tests
+      run: |
+        docker load --input /tmp/sharelatex-full.tar
+        docker run --rm --volume $(pwd)/tests:/tests --entrypoint=/bin/bash sharelatex-full:test -c "/bin/bash /tests/compile.sh"
+    
+    - name: Upload test artifacts
+      uses: actions/upload-artifact@v7
+      if: always()
+      with:
+        name: test-results
+        path: ./tests/*/*.pdf
+        retention-days: 7
+    
+    - name: Export image for push
+      run: |
+        docker save -o /tmp/sharelatex-full.tar sharelatex-full:test
+    
+    - name: Upload build artifact for push
+      uses: actions/upload-artifact@v7
+      with:
+        name: sharelatex-full
+        path: /tmp/sharelatex-full.tar
+        retention-days: 1
+
+  push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    needs: build-and-test
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v7
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4
+    
+    - name: Download build artifact
+      uses: actions/download-artifact@v8
+      with:
+        name: sharelatex-full
+        path: /tmp
+    
+    - name: Load image
+      run: docker load --input /tmp/sharelatex-full.tar
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Extract Docker metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: docker.io/${{ github.repository }},ghcr.io/${{ github.repository }}
+    
+    - name: Install cosign
+      uses: sigstore/cosign-installer@v3
+
+    - name: Push and sign tested Docker image
+      env:
+        TAGS: ${{ steps.meta.outputs.tags }}
+      run: |
+        set -euo pipefail
+        while IFS= read -r tag; do
+          [[ -n "$tag" ]] || continue
+          docker tag sharelatex-full:test "$tag"
+          digest="$(docker push --quiet "$tag")"
+          [[ "$digest" =~ ^sha256:[[:xdigit:]]{64}$ ]]
+          cosign sign --yes "${tag}@${digest}"
+        done <<< "$TAGS"
