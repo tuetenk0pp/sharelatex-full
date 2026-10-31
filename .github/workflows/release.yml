@@ -111,6 +111,9 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha,mode=max
     
+    - name: Install cosign
+      uses: sigstore/cosign-installer@v3
+
     - name: Sign the published Docker image
       env:
         TAGS: ${{ steps.meta.outputs.tags }}
