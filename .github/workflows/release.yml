@@ -12,6 +12,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       digest: ${{ steps.build.outputs.digest }}
     
